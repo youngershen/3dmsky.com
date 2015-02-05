@@ -1,5 +1,7 @@
 <?php namespace App\Http\Controllers;
 
+use Illuminate\Support\Facades\Config;
+
 class WelcomeController extends Controller {
 
 	/*
@@ -30,7 +32,10 @@ class WelcomeController extends Controller {
 	 */
 	public function index()
 	{
-		return view('welcome');
+//		return view('welcome');
+		$environment = app()->environment();
+		$value = Config::get('app.url');
+		return json_encode($value);
 	}
 
 }

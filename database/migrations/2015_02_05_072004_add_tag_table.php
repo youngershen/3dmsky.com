@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreatePasswordResetsTable extends Migration {
+class AddTagTable extends Migration {
 
 	/**
 	 * Run the migrations.
@@ -12,11 +12,14 @@ class CreatePasswordResetsTable extends Migration {
 	 */
 	public function up()
 	{
-		Schema::create('password_reset_record', function(Blueprint $table)
-		{
+		//
+		Schema::create('tag', function(Blueprint $table){
+
 			$table->increments('id');
-			$table->string('email')->index();
-			$table->string('token')->index();
+			$table->string('name', 255)->unique()->index();
+			$table->string('icon', 255)->nullable();
+			$table->text('description')->nullable();
+
 			$table->timestamps();
 			$table->softDeletes();
 		});
@@ -29,7 +32,7 @@ class CreatePasswordResetsTable extends Migration {
 	 */
 	public function down()
 	{
-		Schema::drop('password_resets');
+		//
 	}
 
 }
