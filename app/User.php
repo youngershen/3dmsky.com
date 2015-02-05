@@ -8,6 +8,7 @@ use Illuminate\Contracts\Auth\CanResetPassword as CanResetPasswordContract;
 
 class User extends Model implements AuthenticatableContract, CanResetPasswordContract {
 
+
 	use Authenticatable, CanResetPassword;
 
 	/**
@@ -15,7 +16,7 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
 	 *
 	 * @var string
 	 */
-	protected $table = 'users';
+	protected $table = 'user';
 
 	/**
 	 * The attributes that are mass assignable.
