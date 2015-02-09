@@ -4,8 +4,6 @@ use Illuminate\Database\Eloquent\Model;
 
 class article extends Model {
 
-	//
-    //
     use SoftDeletes;
 
     protected  $dates = ['deleted_at'];
