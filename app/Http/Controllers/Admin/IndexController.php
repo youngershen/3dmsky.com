@@ -75,6 +75,17 @@ class IndexController extends Controller
         return view('admin/categories', $data);
     }
 
+    public function getCategory(Request $request)
+    {
+        $id = $request->input('id');
+        return json_encode('sdf');
+    }
+
+    public function postCategory(Request $request)
+    {
+        return json_encode('test');
+    }
+
     public  function getComments(Request $request)
     {
 

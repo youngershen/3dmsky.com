@@ -8,6 +8,7 @@
         <title>@section('title')3DM星空后台管理@show</title>
         <base href="/">
         <base target="_self">
+        <meta name="_token" content="{{ csrf_token() }}" />
         <link rel="stylesheet" href="/static/lib/bootstrap-3.3.2-dist/css/bootstrap.min.css">
         <link rel="stylesheet" href="/static/lib/bootstrap-3.3.2-dist/css/bootstrap-theme.min.css">
         <link rel="stylesheet" href="/static/css/admin/common.css"/>

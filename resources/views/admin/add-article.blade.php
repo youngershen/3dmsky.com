@@ -4,9 +4,23 @@
 @stop
 
 @section('css')
+    <link rel="stylesheet" href="static/css/admin/add-article.css"/>
 @stop
 
 @section('javascript')
+    <script src="static/lib/tinymce/js/tinymce/tinymce.min.js"></script>
+    <script src="static/javascript/admin/add-article.js"></script>
+    <script>
+        tinymce.init({
+            selector: "textarea",
+            plugins:'image, link',
+            toolbar:[
+                "styleselect | bold italic | link | image |alignleft aligncenter alignright | fontselect | fontsizeselect"
+            ],
+            language : 'zh_CN'
+        });
+
+    </script>
 @stop
 
 @section('headbar')
@@ -29,24 +43,24 @@
 @section('body')
 <div class="container">
     <div class="row">
-        <div class=" col-sm-12 col-md-8 col-lg-8 jumbotron">
-            <form class="form-horizontal">
+        <div class=" col-sm-12 col-md-9 col-lg-9 well">
+            <form class="form-horizontal col-sm-12 col-md-12 col-lg-12 pull-left" method="POST">
                 <div class="form-group">
-                    <label for="article_title_name" class="col-sm-2 control-label">标题</label>
+                    <label for="article_title_name" class="col-sm-1 control-label">标题</label>
                     <div class="col-sm-10">
                         <input type="text" class="form-control" name="article_title_name" id="article_title_id" placeholder="标题">
                     </div>
                 </div>
                 <div class="form-group">
-                    <label for="article_digest_name" class="col-sm-2 control-label">摘要</label>
+                    <label for="article_digest_name" class="col-sm-1 control-label">摘要</label>
                     <div class="col-sm-10">
                         <input type="text" class="form-control" id="article_digest_id"  name="article_digest_name" placeholder="摘要">
                     </div>
                 </div>
                 <div class="form-group">
-                    <label for="article_content_name" class="col-sm-2 control-label">内容</label>
+                    <label for="article_content_name" class="col-sm-1 control-label">内容</label>
                     <div class="col-sm-10">
-                        <textarea name="article_content_name" class="form-control" style="resize: none;"></textarea>
+                        <textarea name="article_content_name" rows="30" class="form-control" style="resize: none;"></textarea>
                     </div>
                 </div>
                 <div class="form-group">
@@ -58,8 +72,41 @@
                 </div>
             </form>
         </div>
-        <div class=" col-sm-12 col-md-2 col-md-offset-1 col-lg-2 col-lg-offset-1 jumbotron">
+        <div class=" col-sm-12 col-md-3  col-lg-3 well">
+            <div id="article_category">
+                <select class="form-control">
+                    <option>1</option>
+                    <option>2</option>
+                    <option>3</option>
+                    <option>4</option>
+                    <option>5</option>
+                </select>
+                <br/>
+                <form class="form-inline" onsubmit="return false;">
+                    <div class="form-group">
+                        <input type="text" class="form-control" id="article_category_input" placeholder="分类">
+                    </div>
+                    <button type="submit" class="btn-sm" id="article_category_submit">确定</button>
+                </form>
+            </div>
+        </div>
 
+        <div class="col-sm-12 col-md-3 col-lg-3 well">
+            <div id="article_tag" class="">
+                <span class="label label-success tag-body">Success</span>
+                <span class="label label-success tag-body">Success</span>
+                <span class="label label-success tag-body">Success</span>
+                <span class="label label-success tag-body">Success</span>
+                <span class="label label-success tag-body">Success</span>
+
+            </div>
+            <br/>
+            <form class="form-inline">
+                <div class="form-group">
+                    <input type="text" class="form-control" id="inputPassword2" placeholder="标签">
+                </div>
+                <button type="submit" class="btn-sm">确定</button>
+            </form>
         </div>
     </div>
 </div>
