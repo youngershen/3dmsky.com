@@ -46,7 +46,7 @@
                 <div class="form-group">
                     <label for="article_content_name" class="col-sm-2 control-label">内容</label>
                     <div class="col-sm-10">
-                        <textarea name="article_content_name" id="" cols="30" rows="10" class="form-control" style="resize: none;"></textarea>
+                        <textarea name="article_content_name" class="form-control" style="resize: none;"></textarea>
                     </div>
                 </div>
                 <div class="form-group">
