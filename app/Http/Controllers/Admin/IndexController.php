@@ -14,6 +14,9 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
+use App\Article;
+use Illuminate\Support\Facades\Log;
+
 class IndexController extends Controller
 {
 
@@ -28,9 +31,34 @@ class IndexController extends Controller
     public function getArticles(Request $request)
     {
 
+        $articles = Article::all();
+
         $data = array();
+        $data['articles'] = $articles;
         $data['article_menu'] = 'active';
         return view('admin/articles', $data);
+    }
+
+    public function getArticle(Request $request)
+    {
+        return $request->input('id');
+    }
+
+    public function getAddArticle(Request $request)
+    {
+        $data = array();
+        $data['article_menu'] = 'active';
+        return view('admin/add-article', $data);
+    }
+
+    public function postAddArticle(Request $request)
+    {
+
+    }
+
+    public function postArticle(Request $request)
+    {
+
     }
 
     public function getTags(Request $request)

@@ -1,6 +1,7 @@
 <?php namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class article extends Model {
 
@@ -8,7 +9,7 @@ class article extends Model {
 
     protected  $dates = ['deleted_at'];
 
-    protected $table = 'tag';
+    protected $table = 'article';
 
     protected $fillable = array('title', 'digest', 'content', 'category_id');
 

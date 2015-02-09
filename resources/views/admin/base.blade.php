@@ -30,6 +30,7 @@
                 </div>
                 <div id="navbar" class="navbar-collapse collapse">
                     <ul class="nav navbar-nav navbar-right">
+                        @section('headbar') @show
                         <li><a href="#">修改密码</a></li>
                         <li><a href="#">退出</a></li>
                     </ul>
