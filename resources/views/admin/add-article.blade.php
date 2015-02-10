@@ -41,7 +41,7 @@
 
 
 @section('body')
-<div class="container">
+<div class="container-fluid">
     <div class="row">
         <div class=" col-sm-12 col-md-9 col-lg-9 well">
             <form class="form-horizontal col-sm-12 col-md-12 col-lg-12 pull-left" method="POST">
@@ -64,7 +64,7 @@
                     </div>
                 </div>
                 <div class="form-group">
-                    <div class="col-sm-offset-2 col-sm-10">
+                    <div class="col-sm-offset-1 col-sm-10 col-lg-offset-1 col-lg-10">
                         <button type="submit" class="btn btn-default">提交</button>
                         <button class="btn btn-default">重置</button>
                         <button class="btn btn-default">预览</button>
@@ -73,14 +73,16 @@
             </form>
         </div>
         <div class=" col-sm-12 col-md-3  col-lg-3 well">
-            <div id="article_category">
-                <select class="form-control">
-                    <option>1</option>
-                    <option>2</option>
-                    <option>3</option>
-                    <option>4</option>
-                    <option>5</option>
-                </select>
+            <div id="">
+                <div id="article_category">
+                    <select class="form-control" id="">
+                        <option>1</option>
+                        <option>2</option>
+                        <option>3</option>
+                        <option>4</option>
+                        <option>5</option>
+                    </select>
+                </div>
                 <br/>
                 <form class="form-inline" onsubmit="return false;">
                     <div class="form-group">

@@ -11,11 +11,11 @@
 namespace App\Http\Controllers\Admin;
 
 
+use App\Category;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
 use App\Article;
-use Illuminate\Support\Facades\Log;
 
 class IndexController extends Controller
 {
@@ -39,10 +39,6 @@ class IndexController extends Controller
         return view('admin/articles', $data);
     }
 
-    public function getArticle(Request $request)
-    {
-        return $request->input('id');
-    }
 
     public function getAddArticle(Request $request)
     {
@@ -51,15 +47,6 @@ class IndexController extends Controller
         return view('admin/add-article', $data);
     }
 
-    public function postAddArticle(Request $request)
-    {
-
-    }
-
-    public function postArticle(Request $request)
-    {
-
-    }
 
     public function getTags(Request $request)
     {
@@ -79,11 +66,6 @@ class IndexController extends Controller
     {
         $id = $request->input('id');
         return json_encode('sdf');
-    }
-
-    public function postCategory(Request $request)
-    {
-        return json_encode('test');
     }
 
     public  function getComments(Request $request)
@@ -106,9 +88,5 @@ class IndexController extends Controller
         $data = array();
         $data['system_menu'] = 'active';
         return view('admin/systems', $data);
-    }
-
-    public function postTag(Request $request)
-    {
     }
 }
