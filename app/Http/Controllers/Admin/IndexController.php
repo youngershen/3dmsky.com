@@ -75,6 +75,12 @@ class IndexController extends Controller
         $data['comment_menu'] = 'active';
         return view('admin/comments', $data);
     }
+    public function getMedias(Request $request)
+    {
+        $data = array();
+        $data['media_menu'] = 'active';
+        return view('admin/medias', $data);
+    }
 
     public function getUsers(Request $request)
     {

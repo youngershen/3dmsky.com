@@ -48,6 +48,8 @@
                         <li class="{{$tag_menu or ''}}"><a href="/admin/tags">标签管理</a></li>
                         <li class="{{$category_menu or ''}}"><a href="/admin/categories">分类管理</a></li>
                         <li class="{{$comment_menu or ''}}"><a href="/admin/comments">评论管理</a></li>
+                        <li class="{{$media_menu or ''}}"><a href="/admin/medias">媒体管理</a></li>
+
                     </ul>
                     <ul class="nav nav-sidebar">
                         <li class="{{$system_menu or ''}}"><a href="/admin/systems">系统设置</a></li>

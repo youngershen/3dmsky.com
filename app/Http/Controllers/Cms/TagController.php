@@ -3,18 +3,16 @@
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
+use App\Tag;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Config;
-use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Validator;
 
-class ArticleController extends Controller {
+class TagController extends Controller {
 
 	public function __construct()
 	{
 		Validator::extend('onlyEnglishAndChineseValidator', 'App\Http\Validators@onlyEnglishAndChineseValidator');
-		Validator::extend('articleTagIdValidator', 'App\Http\Validators@articleTagIdValidator');
-		Validator::extend('articleCategoryIdValidator', 'App\Http\Validators@articleCategoryIdValidator');
 	}
 
 	/**
@@ -35,6 +33,7 @@ class ArticleController extends Controller {
 	public function create()
 	{
 		//
+
 	}
 
 	/**
@@ -44,9 +43,9 @@ class ArticleController extends Controller {
 	 */
 	public function store(Request $request)
 	{
-		$rules = array('title' => 'required|max:255|onlyEnglishAndChineseValidator', 'category' => 'numeric|articleCategoryIdValidator', 'digest' => 'max:255', 'content' => 'required', 'tag' => 'articleTagIdValidator');
+		$rules = array('name'=>'required|unique:tag,name|max:255|onlyEnglishAndChineseValidator');
 
-		$messages = Config::get('messages.article');
+		$messages = Config::get('messages.tag');
 
 		$validator = Validator::make($request->all(), $rules, $messages);
 
@@ -56,11 +55,25 @@ class ArticleController extends Controller {
 		}
 		else
 		{
+			$tag = Tag::create($request->input());
 
-			return response()->json('true');
+			if($tag)
+			{
+				return response()->json(array('state' => true, 'tag' => json_encode($tag)));
+			}
+			else
+			{
+				abort(500);
+			}
 		}
+
 	}
 
+	public function all(Request $request)
+	{
+		$tags = Tag::all();
+		return response()->json($tags);
+	}
 	/**
 	 * Display the specified resource.
 	 *

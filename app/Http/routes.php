@@ -30,6 +30,7 @@ Route::group(['prefix' => 'admin', 'namespace' => 'Admin'], function(){
 	Route::get('tags', ['as' => 'admin_get_tags', 'uses' => 'IndexController@getTags']);
 	Route::get('categories', ['as' => 'admin_get_categories', 'uses' => 'IndexController@getCategories']);
 	Route::get('comments', ['as' => 'admin_get_comments', 'uses' => 'IndexController@getComments']);
+	Route::get('medias', ['as' => 'admin_get_medias', 'uses' => 'IndexController@getMedias']);
 	Route::get('users', ['as' => 'admin_get_users', 'uses' => 'IndexController@getUsers']);
 	Route::get('systems', ['as' => 'admin_get_systems', 'uses' => 'IndexController@getSystems']);
 
@@ -46,5 +47,18 @@ Route::group(['prefix' => 'cms', 'namespace' => 'Cms'], function(){
 		Route::post('store', ['as' => 'cms_category_store',  'uses' => 'CategoryController@store']);
 		Route::get('all', ['as' => 'cms_category_all', 'uses' => 'CategoryController@all']);
 
+	});
+
+	Route::group(['prefix' => 'tag'], function(){
+
+		Route::get('index', ['as' => 'cms_tag_index', 'uses' => 'TagController@index']);
+		Route::get('all', ['as' => 'cms_tag_all', 'uses' => 'TagController@all']);
+		Route::post('store', ['as' => 'cms_tag_store', 'uses' => 'TagController@store']);
+
+	});
+
+	Route::group(['prefix' => 'article'], function(){
+
+		Route::post('store', ['as' => 'cms_article_store', 'uses' => 'ArticleController@store']);
 	});
 });

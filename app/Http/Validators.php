@@ -18,4 +18,15 @@ class Validators
     {
         return preg_match("/^[a-zA-Z0-9\x7f-\xff]+$/", $value);
     }
+
+    public function articleTagIdValidator($attribute, $value, $parameters)
+    {
+
+        return false;
+    }
+
+    public function articleCategoryIdValidator($attribute, $value, $parameters)
+    {
+        return false;
+    }
 }

@@ -1,4 +1,13 @@
 .tag-body
 {
     margin-bottom: 10px;
+    margin-left: 10px;
+    cursor: pointer;
+    display: inline-block;
+    zoom: 1;
+}
+
+.article-form
+{
+    margin-right: 10px;
 }
