@@ -13,6 +13,11 @@ class AddSlugColumnToArticleTable extends Migration {
 	public function up()
 	{
 		//
+		Schema::table('article', function($table){
+
+			$table->string('slug', 255)->nullable()->unique();
+
+		});
 	}
 
 	/**

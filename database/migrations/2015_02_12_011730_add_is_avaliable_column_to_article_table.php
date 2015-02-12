@@ -13,6 +13,10 @@ class AddIsAvaliableColumnToArticleTable extends Migration {
 	public function up()
 	{
 		//
+		Schema::table('article', function($table){
+
+			$table->boolean('is_avaliable')->default(false);
+		});
 	}
 
 	/**
