@@ -27,11 +27,38 @@
 
 
 @section('body')
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-sm-12 col-md-9 col-lg-9 well">
+                @foreach ($articles as $article)
+                    <div class="jumbotron">
+                        <h3>
+                            <a href="/admin/article?id={{$article->id}}">{{$article->title}}</a>
+                        </h3>
+                        <p>{!! $article->content !!}</p>
+                    </div>
+                @endforeach
+            </div>
+            <div class="col-sm-12 col-md-2  col-lg-2 well">
+                <div id="article_category">
+                    <select class="form-control" id="article_category_select">
+                    </select>
+                </div>
 
-    @foreach ($articles as $article)
-        <p>This is article {{ $article->id }}</p>
-        <p><a href="/admin/article?id={{$article->id}}">{{$article->title}}</a></p>
-        <p>{{$article->content}}</p>
-    @endforeach
+                <br/>
+
+                <div>
+                    <span class="label label-success tag-body">水电费是的</span>
+                    <span class="label label-success tag-body">水电费是的</span>
+                    <span class="label label-success tag-body">水电费是的</span>
+                    <span class="label label-success tag-body">水电费是的</span>
+                    <span class="label label-success tag-body">水电费是的</span>
+                    <span class="label label-success tag-body">水电费是的</span>
+                    <span class="label label-success tag-body">水电费是的</span>
+                </div>
+            </div>
+
+        </div>
+    </div>
 
 @stop

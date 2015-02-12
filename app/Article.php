@@ -11,7 +11,7 @@ class Article extends Model {
 
     protected $table = 'article';
 
-    protected $fillable = array('title', 'digest', 'content', 'category_id');
+    protected $fillable = array('title', 'digest', 'content', 'category_id', 'slug', 'is_avaliable');
 
     public function category()
     {

@@ -36,6 +36,12 @@ return [
 
         'content.required' => '内容不能为空',
 
-        'tag.article_tag_id_validator' => '非法的标签'
+        'tag.article_tag_id_validator' => '非法的标签',
+
+        'slug.slug_validator' => '非法的slug',
+        'slug.required' => 'SLUG不能为空',
+
+        'is_avaliable.required' =>'状态不能为空',
+        'is_avaliable.boolean' => '非法的状态值'
     ]
 ];

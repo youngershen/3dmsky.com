@@ -48,8 +48,19 @@ class Validators
         }
         else
         {
+            if($value == 0 || $value =='0')
+            {
+                return true;
+            }
+
             return false;
 
         }
     }
+
+    public function slugValidator($attribute, $value, $parameters)
+    {
+        return preg_match("/^[a-zA-Z0-9-]+$/", $value);
+    }
+
 }

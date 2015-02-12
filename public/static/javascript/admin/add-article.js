@@ -9,7 +9,7 @@ var load_categories  = function()
         url: '/cms/category/all',
         success: function (data)
         {
-            var html = " <select class='form-control' id='article_category_select'>";
+            var html = " <select class='form-control' id='article_category_select'> <option value='0'>-----------------------</option>";
 
             $('#article_category').html();
             for(var i = 0 ; i < data.length ; i++)
@@ -152,8 +152,10 @@ $('#article_form_submit').click(function() {
     var category = $('#article_category_select').val();
 
     var title = $('#article_title_id').val();
-    var content = $('#article_content_id').val();
+    var content = tinymce.get('article_content_id').getContent();
     var digest = $('#article_digest_id').val();
+    var is_avaliable = $('#article_is_avaliable_id').val();
+    var slug = $('#article_slug_id').val();
 
     $.ajax({
         type:'POST',
@@ -164,13 +166,16 @@ $('#article_form_submit').click(function() {
             'content': content,
             'digest' : digest,
             'tag' : tags_id,
-            'category': category
+            'category': category,
+            'slug' : slug,
+            'is_avaliable': is_avaliable
         },
         success: function(data)
         {
             if(data.state)
             {
                 alert('添加文章成功');
+                window.location.reload(true);
             }
             else
             {

@@ -17,7 +17,8 @@
             toolbar:[
                 "styleselect | bold italic | link | image |alignleft aligncenter alignright | fontselect | fontsizeselect"
             ],
-            language : 'zh_CN'
+            language : 'zh_CN',
+            'elements':'article_content_id'
         });
 
     </script>
@@ -48,19 +49,37 @@
                 <div class="form-group">
                     <label for="article_title_name" class="col-sm-1 control-label">标题</label>
                     <div class="col-sm-10">
-                        <input type="text" class="form-control" name="title" id="article_title_id" placeholder="标题">
+                        <input type="text" class="form-control" name="article_title_name" id="article_title_id" placeholder="标题">
                     </div>
                 </div>
+
+                <div class="form-group">
+                    <label for="article_slug_name" class="col-sm-1 control-label">SLUG</label>
+                    <div class="col-sm-10">
+                        <input type="text" class="form-control" name="article_slug_name" id="article_slug_id" placeholder="SLUG">
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="article_is_avaliable_name" class="col-sm-1 control-label">状态</label>
+                    <div class="col-sm-10">
+                        <select name="article_is_avaliable_name" id="article_is_avaliable_id" class="form-control">
+                            <option value="0">FALSE</option>
+                            <option value="1">TRUE</option>
+                        </select>
+                    </div>
+                </div>
+
                 <div class="form-group">
                     <label for="article_digest_name" class="col-sm-1 control-label">摘要</label>
                     <div class="col-sm-10">
-                        <input type="text" class="form-control" id="article_digest_id"  name="digest" placeholder="摘要">
+                        <input type="text" class="form-control" id="article_digest_id"  name="article_digest_name" placeholder="摘要">
                     </div>
                 </div>
                 <div class="form-group">
                     <label for="article_content_name" class="col-sm-1 control-label">内容</label>
                     <div class="col-sm-10">
-                        <textarea name="article" rows="30" class="form-control" style="resize: non" id="article_content_id"></textarea>
+                        <textarea name="article_content_name" rows="30" class="form-control" style="resize: none" id="article_content_id"></textarea>
                     </div>
                 </div>
                 <div class="form-group">

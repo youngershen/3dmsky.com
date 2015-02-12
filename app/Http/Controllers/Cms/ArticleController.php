@@ -18,6 +18,7 @@ class ArticleController extends Controller {
 		Validator::extend('onlyEnglishAndChineseValidator', 'App\Http\Validators@onlyEnglishAndChineseValidator');
 		Validator::extend('articleTagIdValidator', 'App\Http\Validators@articleTagIdValidator');
 		Validator::extend('articleCategoryIdValidator', 'App\Http\Validators@articleCategoryIdValidator');
+		Validator::extend('slugValidator', 'App\Http\Validators@slugValidator');
 	}
 
 	/**
@@ -47,7 +48,7 @@ class ArticleController extends Controller {
 	 */
 	public function store(Request $request)
 	{
-		$rules = array('title' => 'required|max:255', 'category' => 'numeric|articleCategoryIdValidator', 'digest' => 'max:255', 'content' => 'required', 'tag' => 'articleTagIdValidator');
+		$rules = array('title' => 'required|max:255', 'category' => 'numeric|articleCategoryIdValidator', 'digest' => 'max:255', 'content' => 'required', 'tag' => 'articleTagIdValidator', 'slug'=>'required|slugValidator', 'is_avaliable'=>'required|boolean');
 
 		$messages = Config::get('messages.article');
 
@@ -65,7 +66,10 @@ class ArticleController extends Controller {
 			{
 				$category = Category::find($request->input('category'));
 
-				$category->articles()->save($article);
+				if($category)
+				{
+					$category->articles()->save($article);
+				}
 
 				$article->tags()->attach($request->input('tag'));
 

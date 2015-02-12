@@ -59,6 +59,6 @@ Route::group(['prefix' => 'cms', 'namespace' => 'Cms'], function(){
 
 	Route::group(['prefix' => 'article'], function(){
 
-		Route::post('store', ['as' => 'cms_article_store', 'uses' => 'ArticleController@store']);
+		Route::post('store', ['as' => 'cms_article_store', 'uses' => 'ArticleController@store', 'middleware' => 'slug']);
 	});
 });
