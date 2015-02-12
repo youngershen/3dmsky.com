@@ -10,6 +10,8 @@
 
 namespace App\Http;
 
+use App\Category;
+use App\Tag;
 use Illuminate\Support\Facades\Log;
 
 class Validators
@@ -22,11 +24,32 @@ class Validators
     public function articleTagIdValidator($attribute, $value, $parameters)
     {
 
-        return false;
+        foreach( $value as $id)
+        {
+            $tag = Tag::find($id);
+
+            if($tag == null)
+            {
+                return false;
+            }
+        }
+
+        return true;
     }
 
     public function articleCategoryIdValidator($attribute, $value, $parameters)
     {
-        return false;
+        $category = Category::find($value);
+
+        if ($category)
+        {
+
+            return true;
+        }
+        else
+        {
+            return false;
+
+        }
     }
 }

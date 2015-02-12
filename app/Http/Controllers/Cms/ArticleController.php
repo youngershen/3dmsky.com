@@ -1,8 +1,11 @@
 <?php namespace App\Http\Controllers\Cms;
 
+use App\Article;
+use App\Category;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
+use App\Tag;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Config;
 use Illuminate\Support\Facades\Log;
@@ -44,7 +47,7 @@ class ArticleController extends Controller {
 	 */
 	public function store(Request $request)
 	{
-		$rules = array('title' => 'required|max:255|onlyEnglishAndChineseValidator', 'category' => 'numeric|articleCategoryIdValidator', 'digest' => 'max:255', 'content' => 'required', 'tag' => 'articleTagIdValidator');
+		$rules = array('title' => 'required|max:255', 'category' => 'numeric|articleCategoryIdValidator', 'digest' => 'max:255', 'content' => 'required', 'tag' => 'articleTagIdValidator');
 
 		$messages = Config::get('messages.article');
 
@@ -56,8 +59,22 @@ class ArticleController extends Controller {
 		}
 		else
 		{
+			$article = Article::create($request->all());
 
-			return response()->json('true');
+			if($article)
+			{
+				$category = Category::find($request->input('category'));
+
+				$category->articles()->save($article);
+
+				$article->tags()->attach($request->input('tag'));
+
+				return response()->json(array('state' => true));
+			}
+			else
+			{
+				abort(500);
+			}
 		}
 	}
 

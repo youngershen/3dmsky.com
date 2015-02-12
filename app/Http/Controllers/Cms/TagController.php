@@ -20,6 +20,7 @@ class TagController extends Controller {
 	 *
 	 * @return Response
 	 */
+
 	public function index()
 	{
 		//
@@ -55,7 +56,7 @@ class TagController extends Controller {
 		}
 		else
 		{
-			$tag = Tag::create($request->input());
+			$tag = Tag::create($request->all());
 
 			if($tag)
 			{

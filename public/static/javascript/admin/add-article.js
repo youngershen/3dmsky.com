@@ -168,7 +168,14 @@ $('#article_form_submit').click(function() {
         },
         success: function(data)
         {
-            console.log(data);
+            if(data.state)
+            {
+                alert('添加文章成功');
+            }
+            else
+            {
+                alert(data.message);
+            }
         },
         error :function(data)
         {

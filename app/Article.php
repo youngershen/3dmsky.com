@@ -3,7 +3,7 @@
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
-class article extends Model {
+class Article extends Model {
 
     use SoftDeletes;
 
@@ -15,16 +15,16 @@ class article extends Model {
 
     public function category()
     {
-        return $this->hasOne('App\Category', 'category_id', 'id');
+        return $this->belongsTo('App\Category', 'category_id', 'id');
     }
 
     public function author()
     {
-        return $this->hasOne('App\User', 'user_id', 'id');
+        return $this->belongsTo('App\User', 'user_id', 'id');
     }
 
     public function tags()
     {
-        $this->belongsToMany('App\Tag', 'article_tag', 'article_id', 'tag_id');
+        return $this->belongsToMany('App\Tag', 'article_tag', 'article_id', 'tag_id');
     }
 }
